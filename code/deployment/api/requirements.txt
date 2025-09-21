@@ -1,0 +1,10 @@
+pillow
+numpy
+opencv-python-headless
+onnxruntime
+fastapi
+pydantic
+gunicorn
+uvicorn[standard]
+python-multipart
+gunicorn

@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: ./api
+    container_name: spike-api
+    ports:
+      - "8000:8000"
+    environment:
+      - GUNICORN_WORKERS=1
+    volumes:
+      - type: bind
+        source: ../../models
+        target: /app/onnx
+
+  app:
+    build:
+      context: ./app
+    container_name: spike-app
+    ports:
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://api:8000
+    depends_on:
+      - api
